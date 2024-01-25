@@ -37,7 +37,9 @@ test:
     - sklearn_pandas
   commands:
     - pip check
-    - pytest -v tests
+    - pytest -v tests  # [not win]
+    # Skipping test_numerical_transformer_serialization due to permission issues on Windows.
+    - pytest -v tests -k "not test_numerical_transformer_serialization"  # [win]
   requires:
     - pip
     - python
